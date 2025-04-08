@@ -1,0 +1,88 @@
+# Dart/Pub
+.dart_tool/
+.packages
+.pub/
+build/
+flutter_*.png
+
+# Generated plugin registrant
+lib/generated_plugin_registrant.dart
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Runner.xcodeproj/project.xcworkspace/
+ios/Runner.xcodeproj/xcuserdata/
+ios/Flutter/App.framework
+ios/Flutter/engine/
+ios/.dart_tool/
+
+# macOS
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+macos/.symlinks/
+macos/Pods/
+macos/Runner.xcworkspace/
+macos/Runner.xcodeproj/project.xcworkspace/
+macos/Runner.xcodeproj/xcuserdata/
+macos/Flutter/App.framework
+
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/.dart_tool/
+*.iml
+.gradle/
+*.log
+
+# VS Code
+.vscode/
+.history/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xcuserstate
+*.xcworkspace
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Flutter & Dart settings
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+android/key.properties
+
+# Firebase
+*.firebase/
+*.firebaserc
+
+# Others
+*.swp
+*.swo
+*.orig
+*.tmp
+*.log
+*.lock
+*.DS_Store
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# Symbolic links (use with caution)
+*.symlink
