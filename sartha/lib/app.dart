@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sartha/routes.dart';
+import 'package:flutter/foundation.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,9 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Sartha',
-      home: const Scaffold(
-        body: Center(child: Text('Welcome to Sartha')),
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
       ),
+      initialRoute: '/',
+      onGenerateRoute: AppRouter.generateRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

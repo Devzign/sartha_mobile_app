@@ -1,17 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'cubit/splash_cubit.dart';
+import 'dart:async';
+import '../../../constants/image_constants.dart';
+import '../../../constants/text_constants.dart';
+import '../../themes/app_color.dart';
 
-class UsplashScreen extends StatelessWidget {
-  const UsplashScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacementNamed('/onboarding');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => UsplashCubit(),
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Usplash')),
-        body: const Center(child: Text('Usplash Screen')),
+    return Scaffold(
+      backgroundColor: AppColor.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(AppAssets.logo, height: 120),
+            const SizedBox(height: 20),
+            const Text(
+              AppText.welcomeMessage,
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
