@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sartha/presentation/screens/login/view.dart';
 import 'package:sartha/presentation/screens/onboarding/view.dart';
 import 'package:sartha/presentation/screens/splash/view.dart';
 
@@ -9,6 +10,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case '/onboarding':
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => const LogInScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
