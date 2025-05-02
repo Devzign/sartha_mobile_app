@@ -77,18 +77,40 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    // Handle Image Responsively
+                    const SizedBox(height: 20),
                     Center(
                       child: Image.asset(
                         AppAssets.logoSquare,
                         width:
                             constraints.maxWidth *
-                            0.6, // Adjust ratio as needed
+                            0.5,
                         fit: BoxFit.contain,
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Login here',
+                      style: CustomTextStyle.style(
+                        context: context,
+                        fontSize: 24,
+                        color: AppColor.color93287f,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "Welcome back you've\nbeen missed!",
+                      style: CustomTextStyle.style(
+                        context: context,
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
 
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       labelText: 'Email address',
                       controller: _emailController,
@@ -109,10 +131,10 @@ class _SignInPageState extends State<SignInPage> {
                         TextButton(
                           onPressed: () {},
                           child: Text(
-                            'Forgot password?',
+                            'Forgot your password?',
                             style: CustomTextStyle.style(
                               context: context,
-                              fontSize: 15,
+                              fontSize: 14,
                               color: AppColor.color93287f,
                               fontWeight: FontWeight.bold,
                             ),
@@ -124,21 +146,26 @@ class _SignInPageState extends State<SignInPage> {
                     PrimaryButton(text: 'Login', onPressed: _validateInputs),
                     const SizedBox(height: 24),
                     Row(
-                      children: <Widget>[
-                        const Expanded(child: Divider()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have account? ",
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
                           child: Text(
-                            'Or continue with',
+                            'Register',
                             style: CustomTextStyle.style(
                               context: context,
-                              color: AppColor.color59606E,
                               fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                              color: AppColor.color93287f,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const Expanded(child: Divider()),
                       ],
                     ),
                     const SizedBox(height: 24),
@@ -146,35 +173,6 @@ class _SignInPageState extends State<SignInPage> {
                       imagePath: 'assets/icons/google.png',
                       text: 'Sign In Using Google Account',
                       onPressed: () {},
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'New to Sartha? ',
-                          style: CustomTextStyle.style(
-                            context: context,
-                            color: AppColor.color59606E,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                          child: Text(
-                            'Register here',
-                            style: CustomTextStyle.style(
-                              context: context,
-                              fontSize: 15,
-                              color: AppColor.color93287f,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                     const SizedBox(height: 40),
                   ],

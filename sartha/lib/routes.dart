@@ -17,12 +17,12 @@ class AppRouter {
       case '/signIn':
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case '/register':
-        return MaterialPageRoute(builder: (_) => const RegistrationPage());
+        return MaterialPageRoute(builder: (_) => RegistrationPage());
       default:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Route not found')),
-          ),
+          builder:
+              (_) =>
+                  const Scaffold(body: Center(child: Text('Route not found'))),
         );
     }
   }

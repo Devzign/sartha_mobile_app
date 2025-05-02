@@ -1,84 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:sartha/presentation/screens/registration/registration_controller.dart';
 import '../../../constants/image_constants.dart';
 import '../../themes/app_color.dart';
 import '../../themes/custom_text_style.dart';
 import '../../widgets/custom_button.dart';
+import '../../widgets/custom_dropdown.dart';
 import '../../widgets/custom_text_field.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
+class RegistrationPage extends StatelessWidget {
+  final registrationController = Get.put(RegistrationController());
 
-  @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
-}
-
-class _RegistrationPageState extends State<RegistrationPage> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  String? nameError;
-  String? emailError;
-  String? passwordError;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController.addListener(() {
-      if (nameError != null && _nameController.text.isNotEmpty) {
-        setState(() {
-          nameError = null;
-        });
-      }
-    });
-    _emailController.addListener(() {
-      if (emailError != null && _emailController.text.isNotEmpty) {
-        setState(() {
-          emailError = null;
-        });
-      }
-    });
-    _passwordController.addListener(() {
-      if (passwordError != null && _passwordController.text.length >= 6) {
-        setState(() {
-          passwordError = null;
-        });
-      }
-    });
-  }
-
-  void _validateInputs() {
-    setState(() {
-      nameError = _nameController.text.isEmpty ? 'Name is required' : null;
-      emailError = _emailController.text.isEmpty ? 'Email is required' : null;
-      passwordError = _passwordController.text.length < 6
-          ? 'Password must be at least 6 characters'
-          : null;
-    });
-
-    if (nameError == null && emailError == null && passwordError == null) {
-      // Proceed with registration logic
-      print('Registration successful!'); // Placeholder
-    }
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: AppColor.color59606E), // Optional: for back button
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
@@ -93,33 +32,132 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     Center(
                       child: Image.asset(
                         AppAssets.logoSquare,
-                        width: constraints.maxWidth * 0.4, // Slightly smaller for registration
+                        width: constraints.maxWidth * 0.4,
                         fit: BoxFit.contain,
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Create your Account',
+                      style: CustomTextStyle.style(
+                        context: context,
+                        fontSize: 24,
+                        color: AppColor.color93287f,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 30),
                     CustomTextField(
                       labelText: 'Name',
-                      controller: _nameController,
+                      controller: registrationController.nameController,
                       keyboardType: TextInputType.name,
-                      errorText: nameError,
+                      errorText:
+                          registrationController.nameError.value.isNotEmpty
+                              ? registrationController.nameError.value
+                              : null,
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       labelText: 'Email address',
-                      controller: _emailController,
+                      controller: registrationController.emailController,
                       keyboardType: TextInputType.emailAddress,
-                      errorText: emailError,
+                      errorText:
+                          registrationController.emailError.value.isNotEmpty
+                              ? registrationController.emailError.value
+                              : null,
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       labelText: 'Create Password',
-                      controller: _passwordController,
+                      controller: registrationController.passwordController,
                       obscureText: true,
-                      errorText: passwordError,
+                      errorText:
+                          registrationController.passwordError.value.isNotEmpty
+                              ? registrationController.passwordError.value
+                              : null,
+                    ),
+                    const SizedBox(height: 16),
+                    Obx(
+                      () => CustomDropdown<String>(
+                        labelText: 'Select Role',
+                        value:
+                            registrationController.selectedRole.value.isNotEmpty
+                                ? registrationController.selectedRole.value
+                                : null,
+                        items:
+                            ['Admin', 'User', 'Manager'].map((role) {
+                              return DropdownMenuItem(
+                                value: role,
+                                child: Text(role),
+                              );
+                            }).toList(),
+                        onChanged: registrationController.selectRole,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      labelText: 'Pin Code',
+                      controller: registrationController.pinCodeController,
+                      keyboardType: TextInputType.number,
+                      errorText:
+                          registrationController.pinCodeError.value.isNotEmpty
+                              ? registrationController.pinCodeError.value
+                              : null,
+                      maxLength: 6,
+                    ),
+                    const SizedBox(height: 16),
+                    Obx(
+                      () => Column(
+                        children: [
+                          CustomTextField(
+                            labelText: 'State',
+                            controller: TextEditingController(
+                              text:
+                                  registrationController.stateController.value,
+                            ),
+                            enabled: false,
+                          ),
+                          const SizedBox(height: 16),
+                          CustomTextField(
+                            labelText: 'City',
+                            controller: TextEditingController(
+                              text: registrationController.cityController.value,
+                            ),
+                            enabled: false,
+                          ),
+                          if (registrationController.isLoading.value)
+                            const Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: CircularProgressIndicator(),
+                            ),
+                          if (registrationController.fetchError.isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                registrationController.fetchError.value,
+                                style: const TextStyle(color: Colors.red),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      labelText: 'Mobile Number',
+                      controller: registrationController.mobileNoController,
+                      keyboardType: TextInputType.number,
+                      errorText:
+                      registrationController.mobileNoError.value.isNotEmpty
+                          ? registrationController.mobileNoError.value
+                          : null,
+                      maxLength: 10,
                     ),
                     const SizedBox(height: 24),
-                    PrimaryButton(text: 'Register', onPressed: _validateInputs),
+                    PrimaryButton(
+                      text: 'Register',
+                      onPressed: registrationController.validateInputs,
+                    ),
                     const SizedBox(height: 24),
                     Row(
                       children: <Widget>[
@@ -160,8 +198,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // Navigate to login page
-                            Navigator.pop(context); // Example of navigating back
+                            Navigator.pop(context);
                           },
                           child: Text(
                             'Login',
