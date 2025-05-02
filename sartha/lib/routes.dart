@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sartha/presentation/screens/forgot_password/forgot_password_screen.dart';
 import 'package:sartha/presentation/screens/login/sign_in_view.dart';
 import 'package:sartha/presentation/screens/login/view.dart';
 import 'package:sartha/presentation/screens/onboarding/view.dart';
@@ -18,6 +19,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case '/register':
         return MaterialPageRoute(builder: (_) => RegistrationPage());
+      case '/forgotPassword':
+        return MaterialPageRoute(builder: (_) => ForgotPasswordPage());
       default:
         return MaterialPageRoute(
           builder:

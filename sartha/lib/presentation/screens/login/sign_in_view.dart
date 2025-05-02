@@ -129,7 +129,9 @@ class _SignInPageState extends State<SignInPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/forgotPassword');
+                          },
                           child: Text(
                             'Forgot your password?',
                             style: CustomTextStyle.style(

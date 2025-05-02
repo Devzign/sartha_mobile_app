@@ -33,14 +33,19 @@ class CustomTextField extends StatelessWidget {
       enabled: enabled,
       decoration: InputDecoration(
         labelText: labelText,
+        labelStyle: TextStyle(color: AppColor.color93287f),
         border: const OutlineInputBorder(),
-        errorText: errorText,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColor.color015ecc,
-            width: 2.0,
-          ),
+          borderSide: BorderSide(color: AppColor.gray500, width: 1.0),
         ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColor.gray500, width: 1.0),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColor.gray500, width: 1.0),
+        ),
+        errorText: errorText,
+        counterText: maxLength != null ? '' : null,
       ),
     );
   }

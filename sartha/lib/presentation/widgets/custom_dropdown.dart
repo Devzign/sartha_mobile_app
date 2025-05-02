@@ -28,12 +28,13 @@ class CustomDropdown<T> extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
+        labelStyle: TextStyle(color: AppColor.color93287f),
         border: const OutlineInputBorder(),
         errorText: errorText,
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: AppColor.color015ecc,
-            width: 2.0,
+            color: AppColor.color93287f,
+            width: 1.0,
           ),
         ),
       ),
