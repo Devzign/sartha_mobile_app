@@ -8,7 +8,6 @@ class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -33,109 +32,106 @@ class LogInScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          const SizedBox(height: 80),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 10,
-                                  spreadRadius: 1,
-                                ),
-                              ],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Image.asset(
-                                AppAssets.logoSquare,
-                                height: 160,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-
-                          const SizedBox(height: 16),
-                          LayoutBuilder(
-                            builder: (context, constraints) {
-                              return Wrap(
-                                alignment: WrapAlignment.center,
-                                runAlignment: WrapAlignment.center,
-                                children: [
-                                  Text(
-                                    'The Ultimate ',
-                                    style: CustomTextStyle.style(
-                                      context: context,
-                                      fontSize: 30,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
-                                  Text(
-                                    'College Guidance ',
-                                    style: CustomTextStyle.style(
-                                      context: context,
-                                      fontSize: 30,
-                                      color: AppColor.color93287f,
-                                      fontWeight: FontWeight.bold,
-                                      underline: true,
-                                    ),
-                                  ),
-                                  Text(
-                                    'and ',
-                                    style: CustomTextStyle.style(
-                                      context: context,
-                                      fontSize: 30,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Counselling ',
-                                    style: CustomTextStyle.style(
-                                      context: context,
-                                      fontSize: 30,
-                                      color: AppColor.color93287f,
-                                      fontWeight: FontWeight.bold,
-                                      underline: true,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Platform ',
-                                    style: CustomTextStyle.style(
-                                      context: context,
-                                      fontSize: 30,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 24),
-                          _buildOptionRow('NEET-UG', context),
-                          const SizedBox(height: 12),
-                          _buildOptionRow('NEET-PG', context),
-                          const SizedBox(height: 12),
-                          _buildOptionRow('CUET', context),
-                          const SizedBox(height: 32),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.1,
                       ),
-                    ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 4),
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Image.asset(
+                            AppAssets.logoSquare,
+                            height: MediaQuery.of(context).size.height * 0.18,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Wrap(
+                            alignment: WrapAlignment.center,
+                            runAlignment: WrapAlignment.center,
+                            children: [
+                              Text(
+                                'The Ultimate ',
+                                style: CustomTextStyle.style(
+                                  context: context,
+                                  fontSize: 30,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                'College Guidance ',
+                                style: CustomTextStyle.style(
+                                  context: context,
+                                  fontSize: 30,
+                                  color: AppColor.color93287f,
+                                  fontWeight: FontWeight.bold,
+                                  underline: true,
+                                ),
+                              ),
+                              Text(
+                                'and ',
+                                style: CustomTextStyle.style(
+                                  context: context,
+                                  fontSize: 30,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                'Counselling ',
+                                style: CustomTextStyle.style(
+                                  context: context,
+                                  fontSize: 30,
+                                  color: AppColor.color93287f,
+                                  fontWeight: FontWeight.bold,
+                                  underline: true,
+                                ),
+                              ),
+                              Text(
+                                'Platform ',
+                                style: CustomTextStyle.style(
+                                  context: context,
+                                  fontSize: 30,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      _buildOptionRow('NEET-UG', context),
+                      const SizedBox(height: 10),
+                      _buildOptionRow('NEET-PG', context),
+                      const SizedBox(height: 10),
+                      _buildOptionRow('CUET', context),
+                      const SizedBox(height: 20),
+                    ],
                   ),
                 ),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: Row(
@@ -165,7 +161,7 @@ class LogInScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
               ],
             ),
           ],
