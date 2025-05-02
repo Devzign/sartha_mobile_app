@@ -28,13 +28,13 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(AppAssets.logo, height: 120),
+            Image.asset(AppAssets.logoSquare),
             const SizedBox(height: 20),
             const Text(
               AppText.welcomeMessage,
               style: TextStyle(
                 fontSize: 24,
-                color: Colors.white,
+                color: AppColor.color93287f,
                 fontWeight: FontWeight.w600,
               ),
             ),

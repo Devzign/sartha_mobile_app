@@ -14,6 +14,9 @@ class AppColor {
   static const Color colorA2B2C2 = Color(0xFFA2B2C2);
   static const Color color3E4B5E = Color(0xFF3E4B5E);
   static const Color color202020 = Color(0xFF202020);
+  static const Color color59606E = Color(0xFF59606E);
+  static const Color colorDADADA = Color(0xFFDADADA);
+  static const Color color015ecc = Color(0xFF015ecc);
 
   // Standard colors
   static const Color white = Color(0xFFFFFFFF);

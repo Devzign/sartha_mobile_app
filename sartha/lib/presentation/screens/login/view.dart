@@ -1,137 +1,194 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../constants/image_constants.dart';
+import '../../themes/app_color.dart';
+import '../../themes/custom_text_style.dart';
+import '../../widgets/custom_button.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 40),
-                  // App Logo
-                  Image.asset(
-                    'assets/images/logo.png',
-                    height: 100,
+        child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              decoration: BoxDecoration(
+                color: AppColor.color93287f,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(32),
+                  bottomRight: Radius.circular(32),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    offset: const Offset(0, 4),
+                    blurRadius: 10,
+                    spreadRadius: 2,
                   ),
-                  const SizedBox(height: 30),
-                  const Text(
-                    "Let's Get You Started With [App Name]",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black87,
+                ],
+              ),
+            ),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          const SizedBox(height: 80),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: Offset(0, 4),
+                                  blurRadius: 10,
+                                  spreadRadius: 1,
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image.asset(
+                                AppAssets.logoSquare,
+                                height: 160,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 16),
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              return Wrap(
+                                alignment: WrapAlignment.center,
+                                runAlignment: WrapAlignment.center,
+                                children: [
+                                  Text(
+                                    'The Ultimate ',
+                                    style: CustomTextStyle.style(
+                                      context: context,
+                                      fontSize: 30,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  Text(
+                                    'College Guidance ',
+                                    style: CustomTextStyle.style(
+                                      context: context,
+                                      fontSize: 30,
+                                      color: AppColor.color93287f,
+                                      fontWeight: FontWeight.bold,
+                                      underline: true,
+                                    ),
+                                  ),
+                                  Text(
+                                    'and ',
+                                    style: CustomTextStyle.style(
+                                      context: context,
+                                      fontSize: 30,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Counselling ',
+                                    style: CustomTextStyle.style(
+                                      context: context,
+                                      fontSize: 30,
+                                      color: AppColor.color93287f,
+                                      fontWeight: FontWeight.bold,
+                                      underline: true,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Platform ',
+                                    style: CustomTextStyle.style(
+                                      context: context,
+                                      fontSize: 30,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                          const SizedBox(height: 24),
+                          _buildOptionRow('NEET-UG', context),
+                          const SizedBox(height: 12),
+                          _buildOptionRow('NEET-PG', context),
+                          const SizedBox(height: 12),
+                          _buildOptionRow('CUET', context),
+                          const SizedBox(height: 32),
+                        ],
+                      ),
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 30),
-
-                  // Google Sign In Button
-                  _buildSocialButton(
-                    icon: FontAwesomeIcons.google,
-                    text: 'Sign In Using Google Account',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Facebook Sign In Button
-                  _buildSocialButton(
-                    icon: FontAwesomeIcons.facebook,
-                    text: 'Sign In Using Facebook Account',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Apple Sign In Button
-                  _buildSocialButton(
-                    icon: FontAwesomeIcons.apple,
-                    text: 'Sign In Using Apple Account',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Password Sign In Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Expanded(
+                        child: TertiaryButton(
+                          text: 'Login',
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/signIn');
+                          },
+                          backgroundColor: AppColor.color93287f,
                         ),
                       ),
-                      child: const Text(
-                        'Sign In Using Password',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Register Now
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "New to [App Name]? ",
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigate to register screen
-                        },
-                        child: const Text(
-                          "Register Now",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: SecondaryButton(
+                          text: 'Register',
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
+                          borderColor: AppColor.color93287f,
+                          textColor: AppColor.color93287f,
+                          borderWidth: 2,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+              ],
             ),
-          ),
+          ],
         ),
       ),
     );
   }
-  
-  Widget _buildSocialButton({
-    required IconData icon,
-    required String text,
-    required VoidCallback onPressed,
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: OutlinedButton.icon(
-        onPressed: onPressed,
-        icon: FaIcon(icon, color: Colors.black),
-        label: Text(
+
+  Widget _buildOptionRow(String text, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Image.asset("assets/icons/radio_icon.png", height: 30, width: 30),
+        const SizedBox(width: 8),
+        Text(
           text,
-          style: const TextStyle(color: Colors.black),
-        ),
-        style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: Colors.black12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          style: CustomTextStyle.style(
+            context: context,
+            fontSize: 24,
+            color: Colors.black87,
           ),
         ),
-      ),
+      ],
     );
   }
 }
-

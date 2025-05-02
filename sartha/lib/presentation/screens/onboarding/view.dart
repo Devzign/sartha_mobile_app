@@ -27,7 +27,6 @@ class OnboardingScreen extends StatelessWidget {
                 if (state is OnboardingInitial) {
                   currentIndex = state.index;
                 }
-
                 return Stack(
                   children: [
                     PageView(
@@ -37,24 +36,24 @@ class OnboardingScreen extends StatelessWidget {
                       },
                       children: [
                         _buildOnboardingPage(
-                          imagePath: 'assets/images/d1.jpg',
-                          title: "Your Adventures Start Here",
+                          imagePath: 'assets/images/d1.png',
+                          title: "Find Your Ideal Medical College",
                           description:
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                          "Unlock a world of medical college options tailored to your aspirations and academic profile.",
                           context: context,
                         ),
                         _buildOnboardingPage(
                           imagePath: 'assets/images/d2.png',
-                          title: "Connect with the World",
+                          title: "Compare and Choose Wisely",
                           description:
-                              "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                          "Effortlessly compare colleges based on crucial factors like fees, location, specializations, and more.",
                           context: context,
                         ),
                         _buildOnboardingPage(
-                          imagePath: 'assets/images/d3.jpg',
-                          title: "Explore New Horizons",
+                          imagePath: 'assets/images/d3.png',
+                          title: "Get Expert Guidance",
                           description:
-                              "Discover amazing places and share your experiences with others.",
+                          "Benefit from valuable insights and resources to make informed decisions about your medical education journey.",
                           context: context,
                         ),
                       ],
@@ -62,17 +61,23 @@ class OnboardingScreen extends StatelessWidget {
                     Positioned(
                       top: 16,
                       right: 16,
-                      child: TextButton(
-                        onPressed: () {
-                          context.read<OnboardingCubit>().skipOnboarding();
-                        },
-                        child: Text(
-                          'Skip',
-                          style: CustomTextStyle.style(
-                            context: context,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: AppColor.color93287f
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.color93287f,
+                          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<OnboardingCubit>().skipOnboarding();
+                          },
+                          child: Text(
+                            'Skip',
+                            style: CustomTextStyle.style(
+                              context: context,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.white,
+                            ),
                           ),
                         ),
                       ),

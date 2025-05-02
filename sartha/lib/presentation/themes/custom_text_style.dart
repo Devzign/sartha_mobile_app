@@ -7,6 +7,7 @@ class CustomTextStyle {
     FontWeight fontWeight = FontWeight.normal,
     Color color = Colors.black,
     bool underline = false,
+    Color? decorationColor,
     String fontFamily = 'Roboto',
     FontStyle fontStyle = FontStyle.normal,
   }) {
@@ -27,6 +28,7 @@ class CustomTextStyle {
       fontWeight: fontWeight,
       color: color,
       decoration: underline ? TextDecoration.underline : TextDecoration.none,
+      decorationColor: decorationColor ?? color,
       fontFamily: fontFamily,
       fontStyle: fontStyle,
     );
